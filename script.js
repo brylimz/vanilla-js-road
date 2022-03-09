@@ -180,8 +180,6 @@ if (BMIMark>BMIJohn) {
         console.log(`John's BMI is higher than Mark's`)
     }
 
-*/
-
 // type conversion
 const inputYear = '1991';
 console.log(Number(inputYear), inputYear);
@@ -203,3 +201,42 @@ let n = '1' + 1 //'11'
 n = n - 1;
 
 console.log(n)
+
+
+
+//  5 falsy values: 0, ``, undefined, null, NaN,
+
+console.log(Boolean(0))
+console.log(Boolean(undefined))
+console.log(Boolean('Jonas'))
+
+console.log(Boolean(``))
+
+
+const money = 100;
+if (money) {
+    console.log("Don't spend it all;")
+} else {
+    console.log('You Should get a job!')
+}
+
+let height = '0';
+if(height) {
+    console.log('Yay! Height is defined')
+} else {
+    console.log('Height is UNDEFINED')
+}
+*/
+
+const age = 18 ;
+if(age === 18){console.log('strict')}
+if(age == 18){console.log('loose')}
+
+const favourite  = Number(prompt("What's your favorite number?"))
+console.log(typeof (favourite))
+
+if(favourite === 23) {
+    console.log('Cool 23 is an amazing number!')
+} else {
+    console.log(`why no ${favourite} in ur number`)
+}
