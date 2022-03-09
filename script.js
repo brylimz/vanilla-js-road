@@ -120,4 +120,3 @@ console.log(HigherBMI)
 
 
 
-
