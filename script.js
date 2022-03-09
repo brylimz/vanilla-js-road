@@ -100,7 +100,6 @@ console.log(x,y)
 const averageAge = (ageJonas + ageSarah) / 2
 console.log(ageJonas, ageJonas, averageAge);
 
-*/
 
 
 const massMark = 78
@@ -119,4 +118,65 @@ const HigherBMI = BMIMark > BMIJohn
 console.log(HigherBMI)
 
 
+const firstName = 'Jonas'
+const job = 'teacher'
+const birthYear = 1991
+const year = 2037
+
+const jonas = "I'm " + firstName + ', a ' + (year - birthYear) + ' years old' + ' ' +  job +'!'
+
+console.log(jonas)
+
+const jonasNew = `I'm ${firstName}, a ${year-birthYear} years old ${job}!`
+
+
+console.log(jonasNew)
+
+console.log(`testing
+multiline`);
+
+
+
+
+const age = 15;
+
+
+if(age>=18){console.log('Sarah can start driving license 🐱‍🏍')} else {
+    const yearLeft = 18 - age
+    console.log(`Sarah is too young. wait another ${yearLeft} years 😘` )
+
+}
+
+
+
+const birthYear = 2012;
+let century;
+
+if(birthYear <= 2000) {
+    century = 20;
+} else {
+    century = 21;
+}
+
+console.log(century)
+*/
+
+const massMark = 78
+const heightMark = 1.69
+
+const massJohn = 92
+const heightJohn = 1.95
+
+const BMIMark = massMark / heightMark ** 2
+const BMIJohn = massJohn / heightJohn ** 2
+const HigherBMI = BMIMark > BMIJohn
+
+console.log(BMIMark, BMIJohn, HigherBMI);
+
+
+if (BMIMark>BMIJohn) {
+    console.log(`Mark's BMI is ${BMIMark} higher than John's  ${BMIJohn}`)
+    } else{ 
+        console.log(`John's BMI is higher than Mark's`)
+    }
 
