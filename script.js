@@ -49,7 +49,6 @@ var job = 'programmer';
 job = 'teacher'
 console.log(job)
 
-*/
 const now = 2037;
 
 const ageJonas = now - 1991;
@@ -59,32 +58,31 @@ console.log(ageJonas, ageSarah);
 console.log(ageJonas * 2, ageJonas / 10, 2 ** 3 )
 
 
+//assignment operators
+
 const firstName = 'Byl';
 const lastName = 'ZXC';
 console.log(firstName + ' '  + lastName)
 
-let x  = 10 + 5;
+let x  = 10 + 5; //15
+console.log(x);
+
+x +=10; // x = x + 10 = 25
+x *= 4; // x = x * 4 = 100
+x++; // x = x + 1 = 101
+x--; // x = x -1 = 100
+x--;
 console.log(x);
 
 
+console.log(ageJonas > ageSarah);
+
+console.log(ageSarah>=18)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const isFullAge = ageSarah >= 18;
+console.log(now - 1991 > now - 2018)
+*/
 
 
 
