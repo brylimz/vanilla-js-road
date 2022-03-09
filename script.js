@@ -82,39 +82,41 @@ console.log(ageSarah>=18)
 
 const isFullAge = ageSarah >= 18;
 console.log(now - 1991 > now - 2018)
+
+
+
+const now = 2037;
+
+const ageJonas = now - 1991;
+const ageSarah = now - 2018;
+
+console.log(now - 1991 > now - 2018)
+
+
+let x, y;
+x = y = 25-10-5
+console.log(x,y)
+
+const averageAge = (ageJonas + ageSarah) / 2
+console.log(ageJonas, ageJonas, averageAge);
+
 */
 
 
+const massMark = 78
+const heightMark = 1.69
+
+const massJohn = 92
+const heightJohn = 1.95
+
+const BMIMark = massMark / heightMark ** 2
+const BMIJohn = massJohn / heightJohn ** 2
+
+console.log(BMIMark, BMIJohn);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const HigherBMI = BMIMark > BMIJohn
+console.log(HigherBMI)
 
 
 
