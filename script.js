@@ -273,11 +273,10 @@ if(hasDriverLicense && hasGoodVision && !isTired) {
     console.log('Someone else should drive')
 }
 
-*/
 
 
-const dolphins = (96 +108 + 89) / 3
-const koalas = (88 + 91 + 110) / 3
+const dolphins = (1) / 3
+const koalas = (1) / 3
 console.log(dolphins, koalas)
 
 const dolphins1 = (97+112+101) / 3
@@ -295,8 +294,62 @@ if (dolphins > koalas &&  dolphins >= 100){
 console.log(`dolphins win`) 
 } else if (dolphins < koalas && koalas >=100) {
     console.log('koalas win')
-} else if (dolphins === koalas) {
+} else if (dolphins === koalas && dolphins >=100 && koalas 
+    >=100) {
     console.log('its a draw')
 } else { 
     console.log(`No team reached ${minimumScore} score`)
+}
+
+*/
+
+
+const day = 'monday';
+switch (day){
+    case 'monday':
+    console.log('nice')
+    console.log('go to bali')
+    break
+
+    case 'tuesday':
+        console.log('go to spain')
+        break
+
+        case 'wednesday':
+            case 'thursday':
+            console.log('go to navi')
+        break
+
+            case 'friday':
+                console.log('Record Videos')
+                break
+
+                case 'saturday':
+                case 'sunday':
+                    console.log('Happy Weekend')
+                break
+    
+                default:
+                    console.log('not a valid day')
+}
+
+
+if (day === 'monday') {
+    console.log('nice')
+    console.log('go to bali')
+
+} else if (day ==='tuesday'){
+    console.log('go to spain')
+    
+} else if (day ==='wednesday' || day === 'thursday') {
+    console.log('go to navi')
+
+} else if (day === 'friday') {
+    console.log('record videos')
+
+} else if (day === 'saturday' || day === 'sunday') {
+    console.log('Happy Weekend ')
+
+} else {
+    console.log('Not a valid day')
 }
