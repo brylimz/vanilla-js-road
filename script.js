@@ -384,3 +384,4 @@ const totalBill = billValues + tip
 console.log(`The bill was ${billValues}, the tip was ${tip} and the total value is ${totalBill}`)
 
 
+
