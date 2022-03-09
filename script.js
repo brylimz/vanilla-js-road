@@ -226,7 +226,6 @@ if(height) {
 } else {
     console.log('Height is UNDEFINED')
 }
-*/
 
 const age = 18 ;
 if(age === 18){console.log('strict')}
@@ -237,6 +236,67 @@ console.log(typeof (favourite))
 
 if(favourite === 23) {
     console.log('Cool 23 is an amazing number!')
+} else if (favourite === 7) {
+    console.log(`Cool 7 is an amazing number`)
+} else if (favourite === 5) {
+    console.log('Cool 6 is also a cool number')
+
 } else {
-    console.log(`why no ${favourite} in ur number`)
+    console.log(`${favourite} is not 23 or 7 or 6`)
+}
+
+if(favourite !== 23) console.log('Why not 23');
+
+
+
+const hasDriverLicense = true; // A
+const hasGoodVision = true; // B
+
+console.log(hasDriverLicense && hasGoodVision);
+console.log(hasDriverLicense || hasGoodVision);
+console.log(!hasDriverLicense);
+
+// if(hasDriverLicense && hasGoodVision
+//     ){
+//     console.log('Sarah is able to drive!')
+// } else {
+//     console.log('Someone else should drive')
+// }
+
+const isTired = false; // C
+console.log(hasDriverLicense && hasGoodVision && isTired);
+
+
+if(hasDriverLicense && hasGoodVision && !isTired) {
+    console.log('Sarah is able to drive!')
+} else {
+    console.log('Someone else should drive')
+}
+
+*/
+
+
+const dolphins = (96 +108 + 89) / 3
+const koalas = (88 + 91 + 110) / 3
+console.log(dolphins, koalas)
+
+const dolphins1 = (97+112+101) / 3
+const koalas1 = (109+95+123) / 3
+console.log(dolphins1, koalas1)
+
+const doplhins2 = (97+112+101) / 3
+const koalas2 = (109+95+106) / 3
+console.log(doplhins2, koalas2)
+
+
+minimumScore = 100
+
+if (dolphins > koalas &&  dolphins >= 100){
+console.log(`dolphins win`) 
+} else if (dolphins < koalas && koalas >=100) {
+    console.log('koalas win')
+} else if (dolphins === koalas) {
+    console.log('its a draw')
+} else { 
+    console.log(`No team reached ${minimumScore} score`)
 }
