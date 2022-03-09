@@ -159,7 +159,7 @@ if(birthYear <= 2000) {
 }
 
 console.log(century)
-*/
+
 
 const massMark = 78
 const heightMark = 1.69
@@ -180,3 +180,17 @@ if (BMIMark>BMIJohn) {
         console.log(`John's BMI is higher than Mark's`)
     }
 
+*/
+
+// type conversion
+const inputYear = '1991';
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 18);
+
+
+console.log(Number('Jonas'))
+console.log(typeof NaN)
+
+console.log(String(23), 23);
+
+// type coercion
