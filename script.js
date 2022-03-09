@@ -301,7 +301,6 @@ console.log(`dolphins win`)
     console.log(`No team reached ${minimumScore} score`)
 }
 
-*/
 
 
 const day = 'monday';
@@ -353,3 +352,35 @@ if (day === 'monday') {
 } else {
     console.log('Not a valid day')
 }
+
+
+const age = 18;
+age >= 18 ? console.log('I like to drink wine') :
+console.log('i like to drink water')
+
+const drink = age >= 18 ? 'wine' : 'water';
+console.log(drink);
+
+let drink2; 
+if(age >= 18){
+    drink2 = 'wine'
+} else {
+    drink2 = 'water'
+}
+console.log(drink2)
+
+console.log(`I like to drink ${age >=18 ? 'wine': 'water'}`)
+*/
+
+
+const  billValues = 430
+
+const tip = billValues >= 50 && billValues <= 300 ? (billValues*15)/100 : (billValues*20)/100
+
+
+console.log(tip)
+
+const totalBill = billValues + tip
+console.log(`The bill was ${billValues}, the tip was ${tip} and the total value is ${totalBill}`)
+
+
