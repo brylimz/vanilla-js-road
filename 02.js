@@ -131,7 +131,7 @@ const yearsUntilRetirement = (birthYear, firstname) => {
     const retirement = 65 - age;
     return `${firstname} retires in ${retirement} years` 
 }
-*/
+
 
 
 
@@ -139,5 +139,43 @@ const calcAverage = (a,b,c) => (a+b+c) / 3;
 console.log(calcAverage(3,4,5))
 
 // test 1
-const scoreDoplhins = calcAverage (44, 23,71);
-const scoreKoalas = calcAverage(65,54,49);
+let scoreDoplhins = calcAverage (44, 23,71);
+let scoreKoalas = calcAverage(65,54,49);
+console.log(scoreDoplhins, scoreKoalas)
+
+const checkWinner = function(avgDolphins, avgKoalas){
+    if (avgDolphins >= 2 * avgKoalas) {
+    console.log(`Doplhins win ${avgDolphins}, vs ${avgKoalas})`) 
+   } else if (avgKoalas >= 2 * avgDolphins) {
+    console.log(`Koalas win ${avgDolphins}, vs ${avgKoalas})`)
+   } else {
+       console.log('Nobody Wins')
+   }
+
+}
+
+checkWinner(scoreDoplhins, scoreKoalas)
+
+
+// test 2
+scoreDoplhins = calcAverage (85, 54,41);
+scoreKoalas = calcAverage(23,34,27);
+console.log(scoreDoplhins, scoreKoalas)
+checkWinner(scoreDoplhins, scoreKoalas)
+
+
+
+ */
+
+const friend1 = 'Michael';
+const friend2 = 'Steven';
+const friend3 = 'Peter';
+
+const friends = ['Michael', 'Steven', 'Peter']
+console.log(friends)
+
+const years = new Array(1991, 1984, 2022);
+console.log(years)
+
+
+
