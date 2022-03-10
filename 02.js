@@ -255,5 +255,99 @@ const total = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]]
 
 console.log(total)
 
+
+
+
+
+const calcTip = function(bill) {
+    return bill >= 50 && bill <= 300? bill * 15/100: bill * 20/100
+}
+
+console.log(calcTip(100))
+
+bills = [125, 555, 44]
+
+tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2]) ]
+
+total = [bills[0] + tips[0],bills[1] + tips[1], bills[2] + tips[2] ]
+
+console.log(total)
+
+
+const jonas = {
+    firstName : 'Jonas',
+    lastName : 'Schmedtmann',
+    age: 2037-1991,
+    job: 'teacher',
+    friends: ['Michael', 'Learn', 'To Rock']
+};
+
+
+console.log(jonas)
+
+console.log(jonas.lastName);
+console.log(jonas['age'])
+
+const nameKey = 'Name';
+console.log(jonas['first' + nameKey])
+console.log(jonas['last' + nameKey])
+
+const interestedIn = prompt('What do you want to know about Jonas? choose between firstName, lastName, Age, Job, and Friends')
+
+console.log(jonas[interestedIn]);
+
+if (jonas[interestedIn]){
+    console.log(jonas.interestedIn)
+} else {
+    console.log('Wrong Request')
+}
+
+jonas.location = 'Portugal'
+jonas['twitter'] = '@Jonasschmedtman'
+console.log(jonas);
+
+
+// challenge
+// 'jonas has 3 friends and his best friend is caled michael'
+
+const jonas = {
+    firstName : 'Jonas',
+    lastName : 'Schmedtmann',
+    age: 2037-1991,
+    job: 'teacher',
+    friends: ['Michael', 'Learn', 'To Rock']
+};
+
+console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called  ${jonas.friends[0]}`)
 */
 
+const jonas = {
+    firstName : 'Jonas',
+    lastName : 'Schmedtmann',
+    birthYear : 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Learn', 'To Rock'],
+    hasDriverLicense: true,
+
+
+
+    // calcAge: function(){
+    //     return 2037 - this.birthYear
+    // }
+
+    calcAge: function(){
+        this.age = 2037 - this.birthYear
+        return this.age
+    } , 
+    hDLicense : function(){
+        return this.hasDriverLicense = true? this.hasDriverLicense = 'Has Driver License': 'No'
+    }
+};
+
+console.log(jonas.calcAge())
+console.log(jonas.age)
+// console.log(jonas['calcAge'](jonas.birthYear))
+
+// challenge
+console.log(jonas.hDLicense())
+console.log(`${jonas.firstName} is a ${jonas.age}-year old teacher, and he ${jonas.hasDriverLicense} `)
