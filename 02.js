@@ -319,7 +319,7 @@ const jonas = {
 };
 
 console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called  ${jonas.friends[0]}`)
-*/
+
 
 const jonas = {
     firstName : 'Jonas',
@@ -352,4 +352,23 @@ console.log(jonas.age)
 console.log(jonas.hDLicense())
 
 console.log(`${jonas.firstName} is a ${jonas.age}-year old teacher, and he ${jonas.hasDriverLicense} `)
+
+*/
+
+
+const mark = {
+    fullName : 'Mark Miller',
+    mass :78 ,
+    height : 1.69,
+    calcBMI : function(mass, height){
+
+    }
+
+}
+
+const john = {
+    fullName : 'John Smith',
+    mass : 92 ,
+    height : 1.95
+}
 
