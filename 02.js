@@ -209,5 +209,51 @@ console.log(age1, age2, age3)
 const ages = [calcAge(newYears[0]), calcAge(newYears[1])]
 console.log(ages)
 
+
+
+const friends = ['Michael', 'Steven','Peter'];
+// add elements
+const newLength = friends.push('Jay');
+console.log(friends);
+console.log(newLength)
+
+friends.unshift('John')
+console.log(friends)
+
+// Remove elements
+
+friends.pop(); // Last
+const popped = friends.pop()
+console.log(popped);
+console.log(friends)
+
+friends.shift() // first
+console.log(friends)
+
+friends.push(23)
+console.log(friends.indexOf(23))
+console.log(friends.includes('Michael'))
+
+if (friends.includes('Steven'))
+console.log('you have a friend')
+
+
+
+
+
+const tip = function(bill) {
+return bill >= 50 && bill <= 300 ? bill * 15 / 100: bill * 20 / 100
+
+}
+console.log(tip(111))
+const bills = [125, 555, 44]
+const tips = [tip (bills[0]), tip (bills[1]), tip (bills[2])]
+console.log(bills, tips)
+
+
+const total = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]]
+
+console.log(total)
+
 */
 
