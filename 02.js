@@ -327,7 +327,7 @@ const jonas = {
     birthYear : 1991,
     job: 'teacher',
     friends: ['Michael', 'Learn', 'To Rock'],
-    hasDriverLicense: true,
+    hasDriverLicense: false,
 
 
 
@@ -340,7 +340,7 @@ const jonas = {
         return this.age
     } , 
     hDLicense : function(){
-        return this.hasDriverLicense = true? this.hasDriverLicense = 'Has Driver License': 'No'
+        return this.hasDriverLicense === true? this.hasDriverLicense = 'Has Driver License': this.hasDriverLicense = 'has no driver license'
     }
 };
 
@@ -350,4 +350,6 @@ console.log(jonas.age)
 
 // challenge
 console.log(jonas.hDLicense())
+
 console.log(`${jonas.firstName} is a ${jonas.age}-year old teacher, and he ${jonas.hasDriverLicense} `)
+
