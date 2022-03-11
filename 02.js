@@ -382,4 +382,86 @@ console.log(mark.calcBMI())
 
 nice = john.bmi >= mark.bmi? console.log(`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi}) !`): console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})`)
 
+
+'use strict'
+console.log('lifting weights repetition 1 ')
+console.log('lifting weights repetition 2 ')
+
+
+// for loop keeps running while condiiton is TRUE
+for(let rep = 1; rep <= 10; rep ++) {
+    console.log(`Lifting weights ${rep}`)
+}
+
+
+for(let repetition = 5; repetition <=10; repetition++){
+    console.log(repetition)
+}
+
+
+
+const jonas = ['Jonas', 
+'Schemdtmann',
+ 2037 - 1991,
+
+'teacher',
+ ['Michael', 'Peter', 'Steven'],
+true ];
+
+const types = [];
+
+
+for (let i = 0; i < jonas.length; i++){
+    // reading from jonas array
+    console.log(jonas[i], typeof jonas[i])
+
+    // Filling types array
+
+    types.push(typeof jonas[i])
+
+}
+
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+   ages.push(2037 - years[i])
+}
+console.log(ages)
+
+// continue and break
+
+console.log(' --- only strings ---- ')
+for (let i = 0; i < jonas.length; i++){
+    if(typeof jonas[i] !== 'string')continue;
+
+    console.log(jonas[i], typeof jonas[i])
+
+}
+
+console.log(' --- break with number ---- ')
+for (let i = 0; i < jonas.length; i++){
+    if(typeof jonas[i] === 'number')break;
+
+    console.log(jonas[i], typeof jonas[i])
+
+}
+
+
+
+const jonas = ['Jonas', 
+'Schemdtmann',
+ 2037 - 1991,
+
+'teacher',
+ ['Michael', 'Peter', 'Steven']]
+
+ for (let i = jonas.length-1; i>= 0; i--){
+     console.log(i,jonas[i])
+ }
+
 */
+
+
