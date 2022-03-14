@@ -1,6 +1,9 @@
 'use strict';
 
 // selecting elements
+const player1EL = document.querySelector('.player--0')
+const player2EL = document.querySelector('.player--1')
+
 const score1EL = document.querySelector('#score--0');
 const score2EL = document.querySelector('#score--1');
 const current1EL = document.querySelector('#current--0')
@@ -36,11 +39,12 @@ if(dice !== 1) {
     currentScore += dice;
     document.getElementById(`current--${activePlayer}`).textContent = currentScore
 
-
 } else {
 // switch to next player
+document.getElementById(`current--${activePlayer}`).textContent = 0
+currentScore = 0
 activePlayer = activePlayer === 0 ? 1: 0;
-
-
+player1EL.classList.toggle('player--active')
+player2EL.classList.toggle('player--active')
 }
 })
