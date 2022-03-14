@@ -83,3 +83,12 @@ p {
   backdrop-filter: blur(3px);
   z-index: 5;
 }
+
+.dice {
+  position: absolute;
+  left: 50%;
+  top: 16.5rem;
+  transform: translateX(-50%);
+  height: 10rem;
+  box-shadow: 0 2rem 5rem rgb(0 0 0 / 20%);
+}
