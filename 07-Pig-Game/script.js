@@ -25,17 +25,33 @@ player2EL.classList.toggle('player--active')
 
 }
 
+let scores, currentScore, activePlayer, playing
+
+const init = function(){
+
+     scores = [0, 0]
+     currentScore = 0;
+     activePlayer = 0;
+     playing = true
+
+    score1EL.textContent = Number(0);
+    score2EL.textContent = Number(0);
+    diceEL.classList.add('hidden');
+    
+    score1EL.textContent = 0
+    score2EL.textContent = 0 
+    current1EL.textContent = 0
+    current2EL.textContent = 0
+    currentScore = 0
+
+    player2EL.classList.remove('player--active')
+    player1EL.classList.add('player--active')
+    document.querySelector(`.player--${activePlayer}`).classList.remove('player--winner')
+    diceEL.classList.add('hidden')
+}
 
 
 // starting condiitons
-score1EL.textContent = Number(0);
-score2EL.textContent = Number(0);
-diceEL.classList.add('hidden');
-
-const scores = [0, 0]
-let currentScore = 0;
-let activePlayer = 0;
-let playing = true
 // rolling dice functionality
 btnRoll.addEventListener('click', function(){
 if(playing) {
@@ -74,9 +90,10 @@ document.getElementById(`score--${activePlayer}`).textContent = scores[activePla
 
     // 2. check if player's score is >= 100
     // finish the game
-if(scores[activePlayer] >= 20)  {
+if(scores[activePlayer] >= 100)  {
 playing = false;
 
+diceEL.classList.add('hidden')
 document.querySelector(`.player--${activePlayer}`).classList.add('player--winner')
 document.querySelector(`.player--${activePlayer}`).classList.remove('player--active')
 
@@ -93,16 +110,5 @@ document.querySelector(`.player--${activePlayer}`).classList.remove('player--act
 
 
 
-btnNew.addEventListener('click', function(){
-    playing = true
-    score1EL.textContent = 0
-    score2EL.textContent = 0 
-    current1EL.textContent = 0
-    current2EL.textContent = 0
-    currentScore = 0
-    player2EL.classList.remove('player--active')
-    player1EL.classList.add('player--active')
-    document.querySelector(`.player--${activePlayer}`).classList.remove('player--winner')
-    diceEL.classList.add('hidden')
-})
+btnNew.addEventListener('click', init)
 
