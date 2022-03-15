@@ -50,7 +50,7 @@ if(playing) {
 if(dice !== 1) { 
     currentScore += dice;
     document.getElementById(`current--${activePlayer}`).textContent = currentScore
-}
+
 
 } else {
 // switch to next player
@@ -59,13 +59,14 @@ document.getElementById(`score--${activePlayer}`).textContent = 0
 scores[activePlayer] = 0 // CHANGE TO 0
 console.log(`score--${activePlayer}`)
 switchPlayer()
-
+}
 }
 })
 
 
 btnHold.addEventListener('click', function(){
     console.log('hold button')
+if (playing){
     // 1. add current score to active player's score
 // scores[1] = scores[1] + currentScore
     scores[activePlayer] += currentScore;
@@ -86,17 +87,19 @@ document.querySelector(`.player--${activePlayer}`).classList.remove('player--act
 }
 
     // switch to the next game
-
+}
 })
 
 
 
 
 btnNew.addEventListener('click', function(){
+    playing = true
     score1EL.textContent = 0
     score2EL.textContent = 0 
     current1EL.textContent = 0
     current2EL.textContent = 0
+    currentScore = 0
     player2EL.classList.remove('player--active')
     player1EL.classList.add('player--active')
     document.querySelector(`.player--${activePlayer}`).classList.remove('player--winner')
