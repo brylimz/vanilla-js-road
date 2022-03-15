@@ -15,7 +15,15 @@ const restaurant = {
 
   order: function(starterIndex, mainIndex){
  return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  }
+
+
+},
+
+orderDelivery: function({starterIndex = 1 , mainIndex = 0, time = '20:00', address}){
+console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+
+
+}
 ,
   openingHours: {
     thu: {
@@ -31,9 +39,43 @@ const restaurant = {
       close: 24,
     },
   },
+
 };
 
+console.log(restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via del sole, 21', 
+  mainindex: 2,
+  starterindex: 2,
+}))
 
+console.log(restaurant.orderDelivery({
+  address : 'Via',
+  starterIndex: 1,
+}))
+
+
+const {name, openingHours, categories} = restaurant;
+console.log(name,openingHours,categories)
+
+const {name: restaurantName, openingHours: hours, categories: tags} = restaurant
+console.log(restaurantName, hours, tags)
+// default value
+const {menu= [], starterMenu: starters = []} = restaurant
+console.log (menu, starters)
+
+let a = 111;
+let b = 999;
+const obj = {a: 23, b: 7, c: 14}
+
+// ({a, b} = obj)
+console.log(a, b)
+
+// nested object 
+const {fri: {open:o, close:c}} = restaurant.openingHours 
+console.log(o, c)
+
+/*
 const arr = [2,3,4]
 
 const [x,y,z] = arr
@@ -60,3 +102,9 @@ const nested = [ 2,5, [5,6]]
 // console.log(i, j)
 const [i,  ,[j, k]] = nested
 console.log(i, j, k)
+
+// default values 
+const [p, q, r] = [8, 9 ]
+console.log(p,q,r)
+
+*/
