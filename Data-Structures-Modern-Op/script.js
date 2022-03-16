@@ -515,3 +515,13 @@ console.log(openStr)
 // property values
 const values = Object.values(openingHours)
 console.log(values)
+
+// entire object
+const entries = Object.entries(openingHours)
+console.log(entries)
+
+
+// key, value
+for (const [day, {open, close}] of entries) {
+  console.log(`on ${day} we open at ${open} and close at ${close} `)
+}
