@@ -2,51 +2,6 @@
 
 'use strict';
 
-const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  
-
-  order: function(starterIndex, mainIndex){
- return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-
-
-},
-
-orderDelivery: function({starterIndex = 1 , mainIndex = 0, time = '20:00', address}){
-console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
-
-
-}
-,
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-
-
-
-  orderPasta: function(ing1, ing2, ing3){
-console.log(`Here is your delecition pasta with ${ing1}, ${ing2}, ${ing3}`)},
-
-orderPizza: function(mainIngredient, ...otherIngredients){
-  console.log(mainIngredient);
-  console.log(otherIngredients)
-}
-};
 //  DECONSTRUCT OPERATOR
 /*
 // Data needed for a later exercise
@@ -359,7 +314,7 @@ if (restaurant.orderPizza) {
 }
 restaurant.orderPizza && restaurant.orderPizza('nice', 'nice')
 
-*/
+
 // nullish operator
 restaurant.numGuest = 10
 const guest2 = restaurant.numGuest || 10
@@ -449,6 +404,7 @@ const game = {
 
 // printGoal(11)
 
+/*
 const [players1, players2] = game.players
 const [gk, ...fieldPlayers] = players1
 console.log(gk, fieldPlayers)
@@ -471,3 +427,91 @@ printGoal(...game.scored)
 
 
 team1 < team2 && console.log('Team 1 is more likely to win')
+
+
+*/
+
+const weekdays = ['mon','tue','wed','thu','fri','sat','sun']
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  }
+}
+
+
+
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  // ES6 Enchaned object literals
+  openingHours,
+
+  order: function(starterIndex, mainIndex){
+ return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+
+
+},
+
+
+ 
+  
+orderDelivery: function({starterIndex = 1 , mainIndex = 0, time = '20:00', address}){
+  console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+  
+  
+  }
+}
+
+
+
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu]
+
+// for(const item of menu) console.log(item)
+
+// for (const [i, el] of menu.entries()) {
+// console.log(`${i + 1} : ${el}` );
+// }
+
+if(restaurant.openingHours && restaurant.openingHours.mon) 
+console.log(restaurant.openingHours.mon.open)
+
+
+// with optional chaining
+console.log(restaurant.openingHours?.tue?.open)
+
+//example
+const days = ['mon','tue','wed','thu','fri','sat','sun']
+for(const day of days) {
+
+const open =  restaurant.openingHours[day]?.open ?? 'closed'
+console.log(`on ${day}, we open at ${open}`)
+}
+
+
+
+const properties = Object.keys(openingHours)
+console.log(properties)
+
+let openStr = `we are open on ${properties.length} days: `
+
+for(const day of properties){
+openStr+= `${day},`
+}
+console.log(openStr)
+
+// property values
+const values = Object.values(openingHours)
+console.log(values)
