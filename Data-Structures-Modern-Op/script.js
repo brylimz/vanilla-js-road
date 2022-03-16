@@ -469,3 +469,5 @@ const printGoal = function(...players){
 // printGoal('davies', 'muller')
 printGoal(...game.scored)
 
+
+team1 < team2 && console.log('Team 1 is more likely to win')
