@@ -1,6 +1,52 @@
 
 
 'use strict';
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  
+
+  order: function(starterIndex, mainIndex){
+ return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+
+
+},
+
+orderDelivery: function({starterIndex = 1 , mainIndex = 0, time = '20:00', address}){
+console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+
+
+}
+,
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+
+
+
+  orderPasta: function(ing1, ing2, ing3){
+console.log(`Here is your delecition pasta with ${ing1}, ${ing2}, ${ing3}`)},
+
+orderPizza: function(mainIngredient, ...otherIngredients){
+  console.log(mainIngredient);
+  console.log(otherIngredients)
+}
+};
 //  DECONSTRUCT OPERATOR
 /*
 // Data needed for a later exercise
@@ -195,7 +241,7 @@ const restaurantCopy = {...restaurant}
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy)
 console.log(restaurant.name)
-*/
+
 
 // REST OPERATOR
 
@@ -284,3 +330,142 @@ add(...x)
 restaurant.orderPizza('mushroom', 'onion', 'olivers', 'spinach');
 
 restaurant.orderPizza('mushroom')
+
+
+
+
+
+
+// use any data type, return any data type short - circuiting
+
+console.log(3  || 'jonas')
+console.log('' || 'jonas');
+
+restaurant.numGuest = 23;
+const guest1 = restaurant.numGuest ? restaurant.numGuest : 10;
+console.log(guest1)
+
+const guest2 = restaurant.numGuest || 10
+console.log(guest2);
+
+console.log('----AND----')
+console.log( 0 && 'jonas')
+console.log( 7 && 'jonas')
+console.log('hello' && 23 && null && 'jonas')
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach')
+
+}
+restaurant.orderPizza && restaurant.orderPizza('nice', 'nice')
+
+*/
+// nullish operator
+restaurant.numGuest = 10
+const guest2 = restaurant.numGuest || 10
+
+const guestCorrect = restaurant.numGuest ?? 10;
+console.log(guestCorrect)
+
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+// const players1 = [...game.players[0]]
+// const players2 =  [...game.players[1]]
+// console.log(players1)
+// console.log(players2)
+
+// const gk1 = players1[0]
+// const gk2 = players2[0]
+
+
+// // const [a,b, ...others] = [1,2,3,4,5];
+// // console.log(a,b,others)
+
+
+// const [a, ...fieldPlayers] = [... players1]
+// console.log(fieldPlayers)
+
+// const [b, ...fieldPlayers1] = [... players2]
+// console.log(fieldPlayers1)
+
+// const [...allplayers] = [...players1, ...players2]
+// console.log(allplayers)
+
+// const[...players1final] = [...players1, 'thiago', 'coutinho', 'perisic']
+// console.log(players1final)
+
+// const team1 = game.odds['team1']
+// const draw = game.odds['x']
+// const team2 = game.odds['team2']
+
+
+// const printGoal = function(number){
+//  if(number[number] && game.scored[number]) {
+//    plgame.players[number]
+//    game.scored[number]
+//   } 
+//  console.log(`${players1[number]}, ${game.score[number]}`)
+// }
+
+// printGoal(11)
+
+const [players1, players2] = game.players
+const [gk, ...fieldPlayers] = players1
+console.log(gk, fieldPlayers)
+
+const allplayers = [...players1, ...players2]
+console.log(allplayers)
+const playerFinal = [...players1, 'thiago', 'cooutinho', 'periscic']
+
+const {odds: {team1, x: draw, team2}} = game
+console.log(team1, draw, team2)
+
+const printGoal = function(...players){
+  console.log(`${players.length} goal were scored`)
+ 
+}
+
+// printGoal('davies', 'muller', 'lewandowski', 'kimmich')
+// printGoal('davies', 'muller')
+printGoal(...game.scored)
+
