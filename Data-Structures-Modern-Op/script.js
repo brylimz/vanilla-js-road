@@ -651,7 +651,7 @@ for (const [team, odd] of Object.entries(game.odds)) {
 const scores = Object.create(game.scored)
 console.log(scores)
 
-*/
+
 
 
 
@@ -719,3 +719,187 @@ console.log(staffUnique)
 console.log()
 
 console.log(new Set('jonasschemdtamnn').size);
+
+
+
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  
+
+  order: function(starterIndex, mainIndex){
+ return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+
+
+},
+
+orderDelivery: function({starterIndex = 1 , mainIndex = 0, time = '20:00', address}){
+console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+}
+,
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+
+};
+
+const rest = new Map();
+rest.set('name','classico italiano');
+rest.set(1, 'Firenze, Italy')
+console.log(rest.set(2, 'Lisbon, Portugal'))
+
+rest
+.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+.set('open', 11)
+.set('close', 23)
+.set(true, 'we are open')
+.set(false, 'we are closed')
+
+console.log(rest.get('name'))
+console.log(rest.get(1))
+
+const time = 1;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')))
+
+
+console.log(rest.has('categories'))
+rest.delete(2);
+// rest.clear()
+const arr = [1, 2];
+
+rest.set(arr, 'test')
+rest.set(document.querySelector('h1'), 'Heading')
+
+
+console.log(rest)
+console.log(rest.size);
+
+
+console.log(rest.get(arr))
+
+
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  
+
+  order: function(starterIndex, mainIndex){
+ return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+
+
+},
+
+orderDelivery: function({starterIndex = 1 , mainIndex = 0, time = '20:00', address}){
+console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+}
+,
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+
+};
+
+
+const question = new Map([
+  ['question', 'what is the best programming language in the world?'],
+  [1,'C'],
+  [2, 'Java'],
+  [3, 'Javascript'],
+  ['correct', 3],
+  [true, 'Correct'],
+  [false, 'try again']
+])
+
+
+console.log(question)
+
+// convert object to map
+console.log(Object.entries(restaurant.openingHours))
+
+const hoursMap = new Map(Object.entries(restaurant.openingHours))
+
+console.log(hoursMap)
+
+for (const [key, value] of question) {
+ if(typeof key === 'number')
+  console.log(`Answer ${key}: ${value}`)
+}
+
+const answer = Number(prompt('your answer'))
+console.log(answer)
+
+console.log(question.get(question.get('correct') === answer))
+// convert map to array
+console.log([...question])
+// console.log([...question.entries()])
+console.log([...question.keys()])
+console.log([...question.values()])
+*/
+
+
+const gameEvents = new Map([
+  [17, 'Goal'],
+  [36, 'Substitution'],
+  [47, 'Goal'],
+  [61, 'Substitution'],
+  [64, 'Yellow Card'],
+  [69, 'Red card'],
+  [70, 'Substitution'],
+  [72, 'Substitution'],
+  [76, 'Goal'],
+  [80, 'Goal'],
+  [92, 'Yellow Card'],
+])
+
+
+// 1 
+
+
+const events = [...new Set(gameEvents.values())]
+console.log(events)
+
+// 2
+gameEvents.delete(64)
+
+// 3
+console.log(`an event happend on average, every ${90 /gameEvents.size} minutes `)
+
+const time = [...gameEvents.keys()].pop()
+console.log(time)
+
+// 4
+
+for (const[min, event] of gameEvents) {
+  const half = min <= 45 ? 'first' : 'second'
+  console.log(`[${half} half]: ${min}: ${event}`)
+}
