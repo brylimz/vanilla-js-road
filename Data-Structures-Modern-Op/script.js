@@ -976,7 +976,7 @@ checkMiddleSeat('11B')
 checkMiddleSeat('23C')
 checkMiddleSeat('3E')
 
-*/
+
 const airline = 'TAP Air Portugal';
 console.log(airline.toLowerCase())
 console.log(airline.toUpperCase())
@@ -1032,3 +1032,52 @@ checkbagge(' I have a laptop some foof and a pocket Knife')
 checkbagge('socks and camera')
 checkbagge('got some snaks and a gun for protection')
 
+*/
+
+console.log('a+very+nice'.split('+'))
+console.log('jonas schmedtmann'.split(' '))
+
+const [firstName, lastName ] = 'Jonas schmedtamann'.split(' ')
+console.log(lastName)
+
+
+const newName = ['Mr', firstName, lastName.toUpperCase()].join(' ')
+console.log(newName)
+
+
+const capitalizeName = function(name){
+const names = name.split(' ');
+const nameUpper = [];
+
+for(const n of names) {
+  // nameUpper.push(n[0].toUpperCase() + n.slice(1))
+nameUpper.push(n.replace(n[0], n[0].toUpperCase()))
+
+}
+console.log(nameUpper.join(' '))
+
+}
+
+capitalizeName('jessica ann smith davis')
+capitalizeName('jonas schmedtmann')
+
+// padding
+const message = 'go to gate 23'
+console.log(message.padStart(25,'+').padEnd(35, '+'));
+
+const maskCreditCard = function(number){
+  const str = number + '';
+  const last = str.slice(-4)
+  return last.padStart(str.length, '*')
+
+}
+
+console.log(maskCreditCard(343434344324))
+
+// repeat
+const message2 = 'bad weather... all departures delays...'
+console.log(message2.repeat([2]))
+
+const planesInLine = function(n) {
+  
+}
