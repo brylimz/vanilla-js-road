@@ -429,7 +429,6 @@ printGoal(...game.scored)
 team1 < team2 && console.log('Team 1 is more likely to win')
 
 
-*/
 
 const weekdays = ['mon','tue','wed','thu','fri','sat','sun']
 const openingHours = {
@@ -525,3 +524,129 @@ console.log(entries)
 for (const [day, {open, close}] of entries) {
   console.log(`on ${day} we open at ${open} and close at ${close} `)
 }
+
+
+*/
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  
+
+  order: function(starterIndex, mainIndex){
+ return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+
+
+},
+
+orderDelivery: function({starterIndex = 1 , mainIndex = 0, time = '20:00', address}){
+console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+
+
+}
+,
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+
+};
+
+
+
+
+
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+
+
+// 1 
+for(const [i,el] of game.scored.entries()) console.log(`${i+1} : ${el}`)
+
+// 2
+const {odds: {team1, x: draw, team2}} =  game 
+console.log(`${(team1 + draw + team2) / 3} `)
+const nice = Object.values(game)
+console.log(nice)
+
+// or
+const odds = Object.values(game.odds)
+let average = 0;
+for (const odd of odds)
+average += odd;
+average /= odds.length
+console.log(average)
+
+
+// 3
+console.log(`Odd of victory ${nice[0]} : ${team1} 
+Odd of draw : ${draw}
+Odd of victory ${nice[1]} : ${team2}
+`,)
+
+// or
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw': `victory ${game[team]}`
+  console.log(`odd of... ${odd}, ${teamStr}`)
+
+}
+
+
+
+
+// 4
+const scores = Object.create(game.scored)
+console.log(scores)
