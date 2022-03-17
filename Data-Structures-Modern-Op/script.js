@@ -1079,5 +1079,7 @@ const message2 = 'bad weather... all departures delays...'
 console.log(message2.repeat([2]))
 
 const planesInLine = function(n) {
-  
+  console.log(`there are ${n} planes in line ${'1'.repeat(n)}`)
 }
+
+planesInLine(5)
