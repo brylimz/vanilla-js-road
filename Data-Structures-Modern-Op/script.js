@@ -526,7 +526,7 @@ for (const [day, {open, close}] of entries) {
 }
 
 
-*/
+
 
 const restaurant = {
   name: 'Classico Italiano',
@@ -650,3 +650,72 @@ for (const [team, odd] of Object.entries(game.odds)) {
 // 4
 const scores = Object.create(game.scored)
 console.log(scores)
+
+*/
+
+
+
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  
+
+  order: function(starterIndex, mainIndex){
+ return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+
+
+},
+
+orderDelivery: function({starterIndex = 1 , mainIndex = 0, time = '20:00', address}){
+console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+
+
+}
+,
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+
+};
+
+
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza'])
+
+console.log(ordersSet);
+
+console.log(new Set(['Jonas']));
+console.log(ordersSet.size)
+console.log(ordersSet.has('Pizza'))
+console.log(ordersSet.has('Bread'))
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto')
+
+console.log(ordersSet)
+
+for(const order of ordersSet) console.log(order)
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef',  'Waiter'
+]
+
+const staffUnique = [...new Set(staff)]
+console.log(staffUnique)
+console.log()
+
+console.log(new Set('jonasschemdtamnn').size);
