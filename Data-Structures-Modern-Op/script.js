@@ -1032,7 +1032,7 @@ checkbagge(' I have a laptop some foof and a pocket Knife')
 checkbagge('socks and camera')
 checkbagge('got some snaks and a gun for protection')
 
-*/
+
 
 console.log('a+very+nice'.split('+'))
 console.log('jonas schmedtmann'.split(' '))
@@ -1083,3 +1083,22 @@ const planesInLine = function(n) {
 }
 
 planesInLine(5)
+*/
+
+document.body.append(document.createElement('textarea'))
+document.body.append(document.createElement('button'))
+
+
+document.querySelector('button').addEventListener('click', function(){
+  const text = document.querySelector('textarea').value
+  const rows = text.split('\n')
+  console.log(rows)
+
+for(const [i, row] of rows.entries()) {
+  const [first, second] =  row.toLowerCase().trim().split('_');
+
+  const output = `${first}${second.replace(second[0], second[0].toUpperCase())}`
+console.log(`${output.padEnd(20)}, ${'✅'.repeat(i+1)}`)
+}
+
+});
