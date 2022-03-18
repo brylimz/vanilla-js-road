@@ -190,18 +190,32 @@ const poll = {
     answers: new Array(4).fill(0),
     registerNewAnswer(){
         // get answer
-        const answer = prompt(`${this.question}\n ${this.options.join('\n')} \n(write option number)`)
+        const answer = Number(prompt(`${this.question}\n ${this.options.join('\n')} \n(write option number)`))
     
         console.log(answer)
+    // register answer
 
-        typeof answer === 'number' && answer < this.answer.length
-        answer.length && this.answer[answer] ++; 
-        
+        typeof answer === 'number' && answer < this.answers.length && this.answers[answer] ++; 
+this.displayResults();
+this.displayResults('String');
+},
 
+displayResults(type = 'array') {
+    if(type=== 'array'){
+        console.log(this.answers);
+    } else if (type === 'string') {
+        console.log(`Poll results are ${this.answers.join(', ')}`);
     }
 
-    // register answer
+}
+
+
 
 };
 
 // poll.registerNewAnswer()
+
+document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll))
+
+
+poll.displayResults.call({answers: [5,2,3]}, 'string' )
