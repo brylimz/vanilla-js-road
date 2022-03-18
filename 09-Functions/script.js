@@ -88,7 +88,7 @@ greet('Hello')('Jonas')
 
 //challenge 
 const greetArr = greeting=> name => console.log(`${greeting} ${name}`);
-*/
+
 
 const lufthansa = {
     airline: 'Lufthansa',
@@ -165,3 +165,43 @@ lufthansa.buyPlane = function(){
 document.querySelector('.buy').addEventListener('click',
 lufthansa.buyPlane.bind(lufthansa))
 
+
+// Partial application 
+const addTax = (rate, value) => (value + value) * rate;
+console.log(addTax(10 , 200))
+
+const addVAT = addTax.bind(null, 0.23)
+// addVAT = value => value  + value * 0.23
+console.log(addVAT(23))
+
+const addTaxRate = function(rate){
+    return function(value){
+        return (value + value) * rate
+    }
+}
+const addvat2 = addTaxRate(0.23)
+console.log(addvat2(10))
+*/
+
+const poll = {
+    question: 'what is your favourite programming language',
+    options: ['0: Javascript', '1: Python', '2: Rust', '3: C++'],
+
+    answers: new Array(4).fill(0),
+    registerNewAnswer(){
+        // get answer
+        const answer = prompt(`${this.question}\n ${this.options.join('\n')} \n(write option number)`)
+    
+        console.log(answer)
+
+        typeof answer === 'number' && answer < this.answer.length
+        answer.length && this.answer[answer] ++; 
+        
+
+    }
+
+    // register answer
+
+};
+
+// poll.registerNewAnswer()
