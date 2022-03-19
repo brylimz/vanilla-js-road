@@ -259,7 +259,7 @@ booker();
 
 console.dir(booker)
 
-*/
+
 let f; 
 const g = function(){
     const a = 23
@@ -289,13 +289,25 @@ const boardPassengers = function(n, wait) {
     const perGroup = n / 3;
 
     setTimeout(function(){
-        console.log(`We are now boaridng all ${n} passengers`)
-    },1000)
+        console.log(`We are now boaridng all ${n} passengers`);
+        console.log(`there are 3 group, each with ${perGroup} passengers`)
+    }, wait * 1000)
 
     console.log(`will start boarding in ${wait} seconds`)
 
 }
 
-setTimeout(function(){
-    console.log('timer')
-}, 1000)
+
+const perGroup = 21
+boardPassengers(180, 1)
+*/
+// challenge
+(function () {
+const header = document.querySelector('h1');
+header.style.color = 'red'    
+
+document.querySelector('body').addEventListener('click', function(){
+    header.style.color = 'blue'
+})
+})();
+
