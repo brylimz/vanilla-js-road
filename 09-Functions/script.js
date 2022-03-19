@@ -181,7 +181,7 @@ const addTaxRate = function(rate){
 }
 const addvat2 = addTaxRate(0.23)
 console.log(addvat2(10))
-*/
+
 
 const poll = {
     question: 'what is your favourite programming language',
@@ -219,3 +219,27 @@ document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer
 
 
 poll.displayResults.call({answers: [5,2,3]}, 'string' )
+
+const runOnce = function(){
+    console.log('this will never run again')
+}
+runOnce();
+
+//IIFE
+(function() {
+    console.log('this will never run again')
+    const isPrivate = 23;
+
+})();
+
+
+(() => console.log('this will also never run again'))();
+
+{
+    const isPrivate = 23;
+var notPrivate = 46
+}
+
+console.log(notPrivate)
+
+*/
