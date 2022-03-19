@@ -73,7 +73,43 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+currencies.forEach(function(value, key, map){
+console.log(`${key}: ${value}`);
+
+})
+
+// set 
+const curreniesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR'])
+console.log(curreniesUnique)
+curreniesUnique.forEach(function(value,key,map) {
+  console.log(`${key}, ${value}`);
+})
+
+
+/*
+//  for(const movement of movements) {
+for(const [i, movement] of movements.entries()){
+if(movement > 0) {
+    console.log(`movement ${i + 1} : you deposited ${movement}`)
+  } else{
+    console.log(`movement ${i + 1} : you deposited ${Math.abs(movement)}`);
+  }
+}
+console.log(`for each`);
+
+movements.forEach(function(movement, i, arr){
+ 
+  if(movement > 0) {
+    console.log(`movement ${i + 1} : you deposited ${movement}`)
+  } else{
+    console.log(`movement ${i + 1} : you deposited ${Math.abs(movement)}`);
+  }
+})
+
+
+
 /////////////////////////////////////////////////
+
 
 // SLICE
 let arr= ['a','b','c','d','e']
@@ -103,4 +139,6 @@ console.log(letters);
 
 // JOIN
 
-console.log(letters.join(' - '));
+console.log(letters.join(''));
+
+*/
