@@ -242,4 +242,60 @@ var notPrivate = 46
 
 console.log(notPrivate)
 
+
+
+const secureBooking = function(){
+    let passengerCount = 0;
+    return function(){
+        passengerCount++;
+        console.log(`${passengerCount} passengers`)
+    }
+}
+
+const booker = secureBooking();
+booker();
+booker();
+booker();
+
+console.dir(booker)
+
 */
+let f; 
+const g = function(){
+    const a = 23
+    f = function(){
+        console.log(a * 2);
+    }
+}
+
+const h = function(){
+    const b = 777;
+    f = function () {
+        console.log(b * 2);
+    }
+}
+
+
+g();
+f()
+console.dir(f)
+// re-assigning f function 
+h()
+f()
+console.log(f);
+
+// example 2
+const boardPassengers = function(n, wait) {
+    const perGroup = n / 3;
+
+    setTimeout(function(){
+        console.log(`We are now boaridng all ${n} passengers`)
+    },1000)
+
+    console.log(`will start boarding in ${wait} seconds`)
+
+}
+
+setTimeout(function(){
+    console.log('timer')
+}, 1000)
