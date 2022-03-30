@@ -194,7 +194,33 @@ if(amount > 0 && receiverAcc &&
 updateUI(currentAccount);
 
 } 
-})
+});
+
+btnLoan.addEventListener('click', function(e){
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+
+  if(amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1))
+  {
+    currentAccount.movements.push(amount);
+
+    updateUI(currentAccount);
+
+  } else{
+    alert('You can not loan more than 10% of your balance');
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
 
 btnClose.addEventListener('click', function(e){
   e.preventDefault();
@@ -216,9 +242,41 @@ containerApp.style.opacity = 0;
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-/*
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+const arr = [[1,2,3], [4,5,6], [7,8]]
+console.log(arr.flat());
+
+const arrDepp = [[1,2], 3, [4,5], 7, [8,9]]
+console.log(arrDepp.flat(2));
+
+/*
+
+console.log(movements)
+// Equality
+console.log(movements.includes(-130));
+
+
+// SOME : CONDITION
+console.log(movements.some(mov => mov === -130));
+const anyDeposites = movements.some(mov => mov > 0)
+console.log(anyDeposites);
+
+// Every : CONDITION
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// Seperate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit))
+console.log(movements.every(deposit))
+console.log(movements.filter(deposit))
+
+
+
+
+
 const firstWithdrawal = movements.find(mov => mov < 0)
 console.log(movements)
 console.log(firstWithdrawal)
