@@ -81,9 +81,149 @@ containerMovements.insertAdjacentHTML('afterbegin', html);
 displayMovements(account1.movements)
 
 
+
+const calcDisplayBalance = function(movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0)
+  labelBalance.textContent = `${balance}`;
+}
+
+calcDisplayBalance(account1.movements);
+
+
+
+const user = 'Steven Thomas Williams'; // stw
+
+const createUsernames = function(accs){
+
+accs.forEach(function(acc){
+  acc.username = acc.owner.toLowerCase().split(' ').map(name=> name[0]).join('');
+
+}
+)
+
+
+}
+
+
+
+createUsernames(accounts);
+
+
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+
+const calcAverageHumanAge = function(ages) {
+  const humanAges = ages.map(age => age <=2 ? 2 * age : 16 + age * 4);
+const adults = humanAges.filter(age => age >= 18);
+  console.log(humanAges)
+  console.log(adults)
+const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
+console.log(average)
+}
+calcAverageHumanAge([5,2,4,1,15,8,3]);
+/*
+console.log(movements)
+// acumulator -> snowball
+const balance = movements.reduce(function(acc, cur, i, arr){
+console.log(`Iteraation ${i}: ${acc}`);
+return acc + cur 
+
+
+}, 0)
+
+
+
+const balance2 = movements.reduce((acc, cur, i , arr) => acc + cur, 0)
+
+console.log(balance2)
+
+
+// maximum value
+console.log(Math.max(...movements))
+const max = movements.reduce((acc, mov) => {
+if (acc > mov)
+return acc;
+else 
+return mov;
+}, movements[0])
+
+console.log(max
+  
+)
+
+
+
+
+
+
+const deposits = movements.filter(function(mov) {
+return mov > 0
+})
+
+console.log(deposits);
+
+const withdrawals = movements.filter(mov=> mov < 0) 
+console.log(withdrawals)
+
+
+
+
+
+
+const user = 'Steven Thomas Williams'; // stw
+
+const createUsernames = function(accs){
+
+accs.forEach(function(acc){
+  acc.username = acc.owner.toLowerCase().split(' ').map(name=> name[0]).join('');
+
+}
+)
+
+
+}
+
+
+createUsernames(accounts);
+console.log(accounts)
+
+
+
+
+
+const eurToUsd = 1.1;
+const movementsUSD = movements.map(mov => mov * eurToUsd); 
+console.log(movementsUSD);
+
+const movmeentsUSDfor = []
+for(const mov of movements){
+  movmeentsUSDfor.push(mov * eurToUsd)
+}
+console.log(movmeentsUSDfor)
+
+
+const movementsDescriptions = movements.map((movement, i , arr) => {
+
+return `Movement ${i+1}: you ${movement > 0? 'deposit': 'withdrew '} ${Math.abs(movement)}`
+
+  // if(movement > 0) {
+  //   return `movement ${i + 1} : you deposited ${movement}`
+  // } else{
+  //   return `movement ${i + 1} : You withdrew ${Math.abs(movement)}`;
+  // }
+}
+
+)
+
+console.log(movementsDescriptions);
+
 
 
 const checkdogs = function(dogsJulia, dogsKate){
@@ -96,7 +236,9 @@ console.log(dogs)
 
 dogs.forEach(function(dog, i){
 if(dog>=3) {
-  console.log(`dog number | is an adult, and is 5 years old`);
+  console.log(`dog number ${i+1} | is an adult, and is ${dog} years old`);
+} else {
+  console.log(`dog number ${i+1} is still a puppy`);
 }
 })
 }
@@ -107,11 +249,6 @@ checkdogs([3,5,2,12,7], [4,1,15,8,3])
 
 
 
-
-
-
-
-/*
 
 currencies.forEach(function(value, key, map){
 console.log(`${key}: ${value}`);
