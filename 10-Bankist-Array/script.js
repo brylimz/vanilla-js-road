@@ -62,23 +62,23 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 const displayMovements = function(movements){
-movements.forEach(function(mov, i){
+containerMovements.innerHTML='';
+// .textContent = 0
+  movements.forEach(function(mov, i){
 const type = mov > 0 ? 'deposit' : 'withdrawal'
 
 const html=` 
 <div class="movements__row">
   <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
-  <div class="movements__value">${mov}}</div>
+  <div class="movements__value">${mov}</div>
 </div>
 `
-
-.insertAdjacentHTML
+containerMovements.insertAdjacentHTML('afterbegin', html);
 
 })
 }
+
 displayMovements(account1.movements)
-
-
 
 
 /////////////////////////////////////////////////
@@ -86,12 +86,22 @@ displayMovements(account1.movements)
 // LECTURES
 
 
+const checkdogs = function(dogsJulia, dogsKate){
+const dogsJuliaCorrected = dogsJulia.slice();
+dogsJuliaCorrected.splice(0, 1)
+dogsJuliaCorrected.splice(-2)
 
+const dogs = dogsJuliaCorrected.concat(dogsKate)
+console.log(dogs)
 
+dogs.forEach(function(dog, i){
+if(dog>=3) {
+  console.log(`dog number | is an adult, and is 5 years old`);
+}
+})
+}
 
-
-
-
+checkdogs([3,5,2,12,7], [4,1,15,8,3])
 
 
 
