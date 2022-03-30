@@ -83,12 +83,12 @@ displayMovements(account1.movements)
 
 
 // Display Balance
-const calcDisplayBalance = function(movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0)
-  labelBalance.textContent = `${balance}€`;
+const calcDisplayBalance = function(acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0)
+  labelBalance.textContent = `${acc.balance}€`;
+
 }
 
-calcDisplayBalance(account1.movements);
 
 
 // Display Sums
@@ -101,7 +101,7 @@ labelSumIn.textContent = `${incomes}€`;
 const outcomes = acc.movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov, 0);
 labelSumOut.textContent = `${Math.abs(outcomes)}€`;
 
-const interest = acc.movements.filter(mov => mov > 0).map(deposit=> deposit * 1.2 /100).filter((int, i, arr) => {
+const interest = acc.movements.filter(mov => mov > 0).map(deposit=> deposit * acc.interestRate /100).filter((int, i, arr) => {
   // console.log(arr);
   return int >= i;
 
@@ -111,11 +111,14 @@ labelSumInterest.textContent = `${interest}€`;
 }
 
 
+// const update UI
+const updateUI = function(acc) {
+  displayMovements(acc.movements);
+  calcDisplayBalance(acc);
+  calcDisplaySummary(acc);
+}
 
-
-
-
-
+// create user
 const user = 'Steven Thomas Williams'; // stw
 
 const createUsernames = function(accs){
@@ -147,19 +150,26 @@ console.log(currentAccount);
 if(currentAccount?.pin === Number(inputLoginPin.value)){
   containerApp.style.opacity = 100;  
   labelWelcome.textContent = `Welcome ${currentAccount.owner}`;
+  labelDate.textContent = new Date().toLocaleDateString();
+  
+  labelBalance.textContent = `${currentAccount.movements.reduce((acc, mov) => acc + mov, 0)}€`;
 
 displayMovements(currentAccount.movements);
 
-calcDisplayBalance(currentAccount.movements);
+calcDisplayBalance(currentAccount);
 
 calcDisplaySummary(currentAccount);
 
+
 //clear form
+inputLoginPin.blur();
 inputLoginUsername.value = '';
 inputLoginPin.value = '';
 } else{
 
   alert('Wrong pin');
+  
+
 }
 
 
@@ -167,12 +177,46 @@ inputLoginPin.value = '';
 });
 
 
+btnTransfer.addEventListener('click', function(e){
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(acc=> acc.username === inputTransferTo.value);
+inputTransferAmount.value = inputTransferTo.value =  ''
 
+if(amount > 0 && receiverAcc &&
+  currentAccount.balance >= amount && receiverAcc?.username !== currentAccount.username)
+{  
+// doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+// update UI 
+
+updateUI(currentAccount);
+
+} 
+})
+
+btnClose.addEventListener('click', function(e){
+  e.preventDefault();
+if(currentAccount.username === inputCloseUsername.value && currentAccount.pin === Number(inputClosePin.value)){
+
+  const index = accounts.findIndex(
+    acc => acc.username === currentAccount.username
+  );
+// remove from array
+  accounts.splice(index, 1);
+console.log(index)
+labelWelcome.textContent = 'Goodbye';
+containerApp.style.opacity = 0;
+} else {
+  alert('Wrong pin');
+}
+})
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-
+/*
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 const firstWithdrawal = movements.find(mov => mov < 0)
@@ -184,7 +228,6 @@ const account = accounts.find(acc => acc.owner === 'Steven Thomas Williams')
 console.log(account)
 
 
-
 // const account6 = accounts.find(function(acc){
 //   return acc.owner === 'Steven Thomas Williams';
 // })
@@ -193,7 +236,7 @@ console.log(account)
 
 
 // PIPELINE
-/*
+
 const totalDepositsUSD = movements.filter(mov => mov > 0).map(mov => mov * 1.1).reduce((acc, mov )=>acc + mov, 0)
 console.log(totalDepositsUSD)
 
