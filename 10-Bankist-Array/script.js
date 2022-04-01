@@ -245,9 +245,57 @@ btnSort.addEventListener('click', function(e){
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+// 1
+const bankDepositSum = accounts.flatMap(acc => acc.movements).filter(mov => mov > 0).reduce((sum, cur) => sum + cur, 0);
+console.log(bankDepositSum);
+
+// 2.
+const numDeposits1000 = accounts.flatMap(acc => acc.movements).reduce((count, cur) => (cur >= 1000 ? ++count : count) , 0)
+
+console.log(accounts.flatMap(acc => acc.movements).filter(mov => mov >= 1000)
+);
+console.log(numDeposits1000);
 
 
+let a = 10;
+console.log(++a);
+console.log(a++);
+
+// 3
+const {deposit, withdrawals} = accounts
+.flatMap(acc => acc.movements)
+.reduce(
+  (sums, cur) => {
+sums[cur > 0 ? 'deposit' : 'withdrawals'] += cur;
+
+    // cur > 0 ? (sums.deposit += cur) : (sums.
+//   withdrawals += cur); 
+return sums;
+}, 
+{deposit: 0, withdrawals:0}
+);  
+
+console.log(deposit, withdrawals);
+
+// 4
+// this is a nice title -> This Is A Nice Title
+
+const convertToTitleCase = function(str) {
+const exceptions = ['a', 'an','the','but','or','on','in','with']
+const words = str.split(' ');
+const titleCased = words.map(word => { 
+  if(exceptions.includes(word)){
+    return word.toLowerCase();
+  } else {
+    return word[0].toUpperCase() + word.slice(1).toLowerCase();
+  }
+});
+return titleCased.join(' ');
+}
+console.log(convertToTitleCase('this is a nice title'));
+
+/*
 const arr = ([1,2,3,4,5,6,7]);
 console.log(new Array(1,2,3,4,5,6,7));
 
@@ -279,7 +327,7 @@ console.log(abc);
 }); 
 
 
-/*
+
 // Strings
 const owners = ['jonas','zach ', 'adam', 'martha']
 console.log(owners.sort())
