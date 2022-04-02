@@ -245,7 +245,55 @@ btnSort.addEventListener('click', function(e){
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+const dogs = [{ weight: 22, curFood:250, owners: ['Alice', 'Bob']},
+{weight: 8, curFood: 200, owners: ['Matilda']},
+{weight: 13, curFood: 275, owners: ['Sarah', 'John']},
+{weight: 32, curFood: 340, owners: ['Michael']},
+]
 
+
+// 1.
+dogs.forEach(dog => (dog.recFood = Math.trunc(dog.weight ** 0.75 * 28)))
+console.log(dogs);
+
+// 2.
+const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+console.log(dogSarah);
+console.log(`Sarah's dog is eating ${dogSarah.curFood > dogSarah.recFood ? 'too much' : 'not enough'}`);
+
+
+// 3. new array eat too much
+const eatTooMuch = dogs.filter(dog => dog.curFood > dog.recFood).flatMap(dog => dog.owners);
+console.log(eatTooMuch);
+
+const eatTooLittle = dogs.filter(dog => dog.curFood < dog.recFood).flatMap(dog => dog.owners);
+console.log(eatTooLittle);
+
+// 4. new array names of the dogs that eat too much and too little
+console.log(`Dogs that eat too much: ${eatTooMuch.join(', ')}` );
+console.log(`Dogs that eat too little: ${eatTooLittle.join(', ')}` );
+
+// 5. log to the console whether the is any dog exactly the amount of food that is recommended (just true or false)
+
+const isExactly = dogs.some(dog => dog.curFood === dog.recFood);
+console.log(isExactly);
+
+// 6. log to console whether the is any dog eating an okay amount of food (try to reuse the condition from 5) 
+const checkEatingOkay = dogs.some(dog => dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1)
+
+console.log(checkEatingOkay);
+
+// 7. create an array containing the dogs that are eating an okay amount of food
+const eatingOkay = dogs.filter(dog => dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1);
+console.log(eatingOkay);
+
+
+// create a shallow copyof the dogs array and sort it by recommended food portion is an ascending order
+const sortedDogs = dogs.slice().sort((a, b) => a.recFood - b.recFood);
+console.log(sortedDogs);
+
+
+/*
 // 1
 const bankDepositSum = accounts.flatMap(acc => acc.movements).filter(mov => mov > 0).reduce((sum, cur) => sum + cur, 0);
 console.log(bankDepositSum);
@@ -295,7 +343,9 @@ return titleCased.join(' ');
 }
 console.log(convertToTitleCase('this is a nice title'));
 
-/*
+
+
+
 const arr = ([1,2,3,4,5,6,7]);
 console.log(new Array(1,2,3,4,5,6,7));
 
