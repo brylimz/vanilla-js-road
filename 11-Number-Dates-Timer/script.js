@@ -69,11 +69,14 @@ const movs = sort? movements.slice().sort((a,b)=>b-a): movements;
 
 movs.forEach(function(mov, i){
 const type = mov > 0 ? 'deposit' : 'withdrawal'
+// round movements
+const roundedMov = Math.round(mov * 100) / 100;
+
 
 const html=` 
 <div class="movements__row">
   <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
-  <div class="movements__value">${mov}€</div>
+  <div class="movements__value">${roundedMov.toFixed(2)}€</div>
 </div>
 `
 containerMovements.insertAdjacentHTML('afterbegin', html);
@@ -88,7 +91,10 @@ displayMovements(account1.movements)
 // Display Balance
 const calcDisplayBalance = function(acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0)
-  labelBalance.textContent = `${acc.balance}€`;
+
+// round balance
+
+labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 
 }
 
@@ -99,17 +105,17 @@ const calcDisplaySummary = function(acc) {
 
 const incomes = acc.movements.filter(mov => mov > 0).reduce((acc, mov) => acc + mov, 0);
 
-labelSumIn.textContent = `${incomes}€`;
+labelSumIn.textContent = `${incomes.toFixed(2)}€`;
 
 const outcomes = acc.movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov, 0);
-labelSumOut.textContent = `${Math.abs(outcomes)}€`;
+labelSumOut.textContent = `${Math.abs(outcomes.toFixed(2))}€`;
 
 const interest = acc.movements.filter(mov => mov > 0).map(deposit=> deposit * acc.interestRate /100).filter((int, i, arr) => {
   // console.log(arr);
   return int >= i;
 
 }).reduce((acc, int) => acc + int, 0);
-labelSumInterest.textContent = `${interest}€`;
+labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 
 }
 
@@ -245,12 +251,74 @@ btnSort.addEventListener('click', function(e){
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+console.log(5 % 2);
+console.log(5 / 2); // 5 = 2 * 2 + 1
+
+const isEven = function(num){
+  return num % 2 === 0;
+}
+console.log(isEven(5));
+console.log(isEven(6));
+
+
+labelBalance.addEventListener('click', function(){
+[...document.querySelectorAll('.movements__row')].forEach(function(row , i){
+  if ( i % 2 === 0){
+    row.style.backgroundColor = '#f0f0f0';
+
+    if(i % 3 === 0)
+    row.style.backgroundColor = 'blue';
+
+  }})}
+)
+/*
+
+console.log(23 === 23.0);
+console.log(0.1 + 0.2);
+console.log(0.1 + 0.2 === 0.3); 
+
+// Conversion
+console.log(Number('23'));
+console.log(+'23');
+
+// Parsing
+console.log(Number(parseInt('23.5', 10)));
+
+console.log(Number.parseFloat('2.5rem'));
+
+console.log(Number.isNaN(20));
+
+console.log(Number.isFinite(20));
+console.log(Number.isFinite('20'));
+console.log(Number.isFinite(+20));
+
+console.log(Math.sqrt(25));
+console.log(25 ** (1 / 2))
+
+console.log(Math.max(5,18,23,11,2));
+console.log(Math.PI * Number.parseFloat('10px') ** 2);
+
+
+const randomInt = (min, max) => Math.trunc(Math.random() * (max - min) + 1);
+
+console.log(randomInt(10, 20));
+
+// Rounding Integers
+
+
+// rounding decimals
+console.log((2.7).toFixed(1));
+
+
+// Base 10 - 0 to 9 
+// Binary Base 2 - 0 and 1
+
+
 const dogs = [{ weight: 22, curFood:250, owners: ['Alice', 'Bob']},
 {weight: 8, curFood: 200, owners: ['Matilda']},
 {weight: 13, curFood: 275, owners: ['Sarah', 'John']},
 {weight: 32, curFood: 340, owners: ['Michael']},
 ]
-
 
 // 1.
 dogs.forEach(dog => (dog.recFood = Math.trunc(dog.weight ** 0.75 * 28)))
@@ -293,20 +361,8 @@ const sortedDogs = dogs.slice().sort((a, b) => a.recFood - b.recFood);
 console.log(sortedDogs);
 
 
-// create dictonary named Deden and add the following properties: coding, main game
-const Deden = {
-  coding: 'C#',
-  mainGame: 'GTA V'
-}
-// loop 3 times and every 1 time loop add a property to Deden with a random value
-for(let i = 0; i < 3; i++){
-  const randomProperty = Object.keys(Deden)[Math.floor(Math.random() * Object.keys(Deden).length)];
-  Deden[randomProperty] = Math.random();
-}
-console.log(Deden);
 
 
-/*
 // 1
 const bankDepositSum = accounts.flatMap(acc => acc.movements).filter(mov => mov > 0).reduce((sum, cur) => sum + cur, 0);
 console.log(bankDepositSum);

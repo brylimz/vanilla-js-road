@@ -1,0 +1,4 @@
+Q: what is the best programming language?   
+A: Python!
+Q: why javascript is not the best programming language?
+A: Because it is not a language.
