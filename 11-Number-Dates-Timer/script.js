@@ -17,6 +17,17 @@ const account2 = {
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
+  movementsDates: [
+    '01/01/2019',
+    '01/02/2019',
+    '01/03/2019',
+    '01/04/2019',
+    '01/05/2019',
+    '01/06/2019',
+    '01/07/2019',
+    '01/08/2019',
+    '01/08/2019',
+  ],
 };
 
 const account3 = {
@@ -36,6 +47,7 @@ const account4 = {
 const accounts = [account1, account2, account3, account4];
 
 // Elements
+const movements_dates = document.querySelector('.movements__dates');
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
 const labelBalance = document.querySelector('.balance__value');
@@ -119,12 +131,23 @@ labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 
 }
 
+// display date text content
+const displayDate = function() {
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  movements_dates.textContent = `${day}/${month}/${year}`;
+}
+
+
 
 // const update UI
 const updateUI = function(acc) {
   displayMovements(acc.movements);
   calcDisplayBalance(acc);
   calcDisplaySummary(acc);
+
 }
 
 // create user
@@ -134,6 +157,8 @@ const createUsernames = function(accs){
 
 accs.forEach(function(acc){
   acc.username = acc.owner.toLowerCase().split(' ').map(name=> name[0]).join('');
+
+
 
 }
 )
@@ -149,6 +174,57 @@ createUsernames(accounts);
 
 // event handler
 let currentAccount;
+
+
+
+// Fake always logged in
+currentAccount = account1
+updateUI(currentAccount);
+displayDate();
+labelDate.textContent = new Date().toLocaleDateString();
+
+// create timer countdown for logout five minutes
+const timer = function(){
+  const time = new Date();
+  const timeLeft = new Date(time.getTime() + 300000);
+  const timer = setInterval(function(){
+    const now = new Date();
+    const diff = timeLeft - now;
+    const minutes = Math.floor(diff / 1000 / 60);
+    const seconds = Math.floor(diff / 1000 % 60);
+    labelTimer.textContent = `${minutes}:${seconds}`;
+    if(diff < 0){
+      clearInterval(timer);
+      labelTimer.textContent = '00:00';
+      containerApp.classList.add('app--logged-out');
+      labelWelcome.textContent = 'Welcome to the Bank of the Future!';
+      labelWelcome.classList.add('welcome--logged-out');
+      labelDate.textContent = '';
+      labelBalance.textContent = '';
+      labelSumIn.textContent = '';
+      labelSumOut.textContent = '';
+      labelSumInterest.textContent = '';
+      inputLoginUsername.value = '';
+      inputLoginPin.value = '';
+      inputTransferTo.value = '';
+      inputTransferAmount.value = '';
+      inputLoanAmount.value = '';
+      inputCloseUsername.value = '';
+      inputClosePin.value = '';
+      btnLogin.classList.remove('login__btn--hidden');
+      btnTransfer.classList.add('form__btn--hidden');
+      btnLoan.classList.add('form__btn--hidden');
+      btnClose.classList.add('form__btn--hidden');
+      btnSort.classList.add('btn--hidden');
+      containerMovements.innerHTML = '';
+    }
+  }, 1000);
+}
+
+
+
+
+
 btnLogin.addEventListener('click', function(e){
 // preven form from submitting
   e.preventDefault();
@@ -169,6 +245,7 @@ calcDisplayBalance(currentAccount);
 
 calcDisplaySummary(currentAccount);
 
+timer()
 
 //clear form
 inputLoginPin.blur();
@@ -192,6 +269,7 @@ btnTransfer.addEventListener('click', function(e){
   const receiverAcc = accounts.find(acc=> acc.username === inputTransferTo.value);
 inputTransferAmount.value = inputTransferTo.value =  ''
 
+
 if(amount > 0 && receiverAcc &&
   currentAccount.balance >= amount && receiverAcc?.username !== currentAccount.username)
 {  
@@ -199,6 +277,13 @@ if(amount > 0 && receiverAcc &&
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
 // update UI 
+
+// create date transfer
+const date = new Date();
+const dateString = date.toLocaleDateString();
+
+label.textContent = dateString;
+
 
 updateUI(currentAccount);
 
@@ -248,9 +333,65 @@ btnSort.addEventListener('click', function(e){
 })
 
 
+labelBalance.addEventListener('click', function(){
+  [...document.querySelectorAll('.movements__row')].forEach(function(row , i){
+    if ( i % 2 === 0){
+      row.style.backgroundColor = '#f0f0f0';
+  
+      if(i % 3 === 0)
+      row.style.backgroundColor = 'blue';
+  
+    }})}
+  )
+
+  
+accounts.forEach(function(acc){
+  acc.date = new Date();
+})
+
+console.log(accounts);
+
+
+
+
+
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+const now = new Date();
+console.log(now);
+
+console.log(new Date('Aug 02 2020 18:05:41'));
+
+console.log(2 ** 53 - 1);
+
+// create new properties Date called in accounts array
+
+console.log(new Date(account1.Date));
+
+console.log(new Date(3 * 24 * 60 * 60 * 1000));
+
+// Working with dates
+const future = new Date(2037, 11, 31, 23, 59, 59);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.getMilliseconds());
+console.log(future.toISOString());
+console.log(future.getTime());
+console.log(Date.now());
+
+future.setFullYear(2038);
+console.log(future);
+/*
+
 console.log(5 % 2);
 console.log(5 / 2); // 5 = 2 * 2 + 1
 
@@ -261,17 +402,6 @@ console.log(isEven(5));
 console.log(isEven(6));
 
 
-labelBalance.addEventListener('click', function(){
-[...document.querySelectorAll('.movements__row')].forEach(function(row , i){
-  if ( i % 2 === 0){
-    row.style.backgroundColor = '#f0f0f0';
-
-    if(i % 3 === 0)
-    row.style.backgroundColor = 'blue';
-
-  }})}
-)
-/*
 
 console.log(23 === 23.0);
 console.log(0.1 + 0.2);
