@@ -1,0 +1,32 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "Recipe application",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brylimz/starter.git"
+  },
+  "keywords": [
+    "byl"
+  ],
+  "author": "byl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brylimz/starter/issues"
+  },
+  "homepage": "https://github.com/brylimz/starter#readme",
+  "devDependencies": {
+    "@parcel/transformer-image": "^2.0.0-rc.0",
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0"
+  },
+  "dependencies": {
+    "core-js": "^3.21.1",
+    "regenerator-runtime": "^0.13.9"
+  }
+}
